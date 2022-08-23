@@ -1,3 +1,15 @@
+$white: #ffffff;
+$second_white: #fafafa;
+$menu: #f5f5f5;
+$myMessage: #e0e0e0;
+$userMessage: rgb(58, 62, 82);
+$names: #303030;
+$text: #3d3d3d;
+$smallText: #b1b1b1;
+$tabs: #8ab0b4;
+
+
+
 html, body {
 	height: 100%;
 }
@@ -5,7 +17,7 @@ html, body {
 .container {
 	height: 100vh;
 	width: 100vw;
-	background: #f5f5f5;
+	background: $menu;
 	display: flex;
 	flex-direction: column;
 }
@@ -18,14 +30,14 @@ html, body {
 	width: 35%;
 	min-width: 450px;
 	max-width: 520px;
-	border-right: 1px solid black;
+	border-right: 1px solid $text;
 }
 
 .leftHeader{
 	display: flex;
 	flex-direction: column;
 	height: 140px;
-	background-color: rgb(240, 237, 225);
+	background-color: $menu;
 	padding: 0 15px;
 
 }
@@ -51,31 +63,47 @@ margin-right: 15px;
 }
 
 .search__input{
-width: 100%;
-height: 40px;
-border-radius: 40px;
-border: 1px solid #fff;
+	width: 100%;
+	height: 40px;
+	border-radius: 40px;
+	border: 1px solid $second_white;
+	padding-left: 35px;
+	font-size: 14px;
+
+
+	&::placeholder{
+font-size: 14px;
+color: $smallText;
+	}
+}
+.search__icon{
+	width: 18px;
+  height: 18px;
+  object-fit: cover;
+  position: absolute;
+  margin-left: 10px;
 }
 
 .usersList{
 	overflow: scroll;
-	background-color: #f5f5f5;
+	background-color: $white;
 	display: flex;
 	flex-direction: column;
 	height: calc(100vh - 140px);
-	padding: 0 15px;
 }
 
 .usersList__tabs{
 	height: 70px;
 	display: flex;
 	align-items: center;
+	margin-top: 15px;
+	padding: 0 15px;
 }
 
 .usersList__button {
 	padding: 0;
 	border: none;
-	color: blue;
+	color: $tabs;
 	background-color: transparent;
 	font-size: 17px;
 }
@@ -88,14 +116,13 @@ width: 100%;
 	display: flex;
 	flex-direction: row;
 	margin: 0;
-	padding: 20px 0;
-	border-bottom: 0.5px solid #000;
-
+	padding: 20px 15px;
+	border-bottom: 0.5px solid $text;
+	
 }
+.usersList__friend:hover{
+	background-color: $menu;
 
-h3 {
-	margin: 0;
-	padding: 0;
 }
 
 .meta {
@@ -112,13 +139,35 @@ h3 {
 	flex-direction: row;
 	justify-content: space-between;
 }
+.name {
+	margin: 0;
+	padding: 0;
+	color: $names;
+	font-size: 16px;
+	font-weight: 600;
+}
+.meta{
+	color: $smallText;
+	font-weight: 600;
+	font-size: 14px;
+
+}
+
+.last-message{
+	font-size: 14px;
+	margin: 0px;
+	color: $smallText;
+}
 
 ul {
 	padding: 0;
 }
 
 .chat{ 
-	width: 100%;
+	display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
 }
 
 .chat__user {
@@ -126,17 +175,30 @@ ul {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding-left: 25px;
-	border-bottom: 1px solid black;
+	padding: 15px 0 15px 25px;	
+	border-bottom: 1px solid $text;
+	z-index: 2;
 }
 
-.chat-history{
-	height: 575px;
+.chat__myMessagContent{
+	flex-direction: row-reverse;
+}
+
+.chat__history{
+	height: 100%;
+	overflow: scroll;
+	display: flex;
+	flex-direction: column;
+	background: $second_white;
 }
 
 .chat__messageContent{
 	margin-bottom: 20px;
 	padding: 0px 15px;
+}
+
+.chat__messageContent:first-child{
+	margin-top: 25px;
 }
 
 .chat__userMessage{
@@ -146,7 +208,7 @@ ul {
 }
  
 .chat__userMessageContent{
-	background: red;
+	background: $userMessage;
 	border-radius: 30px 30px 30px 30px;
 	height: 54px;
 	display: flex;
@@ -155,18 +217,42 @@ ul {
 
 .chat__text{
 	margin: 5px 15px;
+	color: $second_white;
+	font-size: 14px;
 }
 
 .chat__date {
 	margin: 5px 0 0 84px;
+	color: $smallText;
 }
 
-footer{
-width: 100%;
-height: 1vh;
-background: green;
-border-top: 1px solid #fff;
+.chat__myMessageItem{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding-right: 15px;
+	padding-left: 84px;
+	margin-bottom: 20px;
 }
+
+.chat__myMessageBlock{
+	background: $myMessage;
+	border-radius: 30px 30px 30px 30px;
+	height: 54px;
+	display: flex;
+	align-items: center;
+}
+.chat__myText{
+	margin: 5px 15px;
+	color: $names;
+	font-size: 14px;
+}
+.chat__myDate{
+	margin: 5px 15px 0 0px;
+	color: $smallText;
+}
+
+
 
 
 
@@ -176,28 +262,67 @@ border-top: 1px solid #fff;
 	height: 140px;
 	display: flex;
 	align-items: center;
-	background-color: black;
+	background-color: $menu;
 	padding: 0px 15px;
+	border-top: 1px solid $text;
+
 	textarea {
 		height: 54px;
 		width: 100%;
 		margin: 0;
 		outline: none;
-		padding: 0px;
-		border: 1px solid #000;
-		border-right: 0;
-		border-radius: 30px 0px 0px 30px;
+		padding: 5px 25px;
+		border: 1px solid $text;
+		border-radius: 30px 30px 30px 30px;
 		resize: none;
+		font-size: 16px;
+
+
+		&::placeholder {
+			color: $smallText;
+			padding-left: 0px;
+			font-size: 16px;
+	
+		}
 
 	}
+	
 }
-.button{
-	height: 56px;
-	outline: none;
-	border-radius: 0px 30px 30px 0px;
-	padding: 21px;
-	border: 1px solid #000;
-	background-color: #fff;
-	border-left: 0;
 
+.send__button{
+	background: transparent;	
+	border: none;
+	outline: none;
+	position:absolute;
+	right: 30px;
+
+	& img {
+		width: 20px;
+		height: 20px;
+		object-fit: cover;
+		padding:0;
+	}
+	&:hover {
+		border-radius: 100%;
+		padding: 12px;
+		background: $myMessage;
+	}
 }
+
+// .button{
+// 	height: 56px;
+// 	outline: none;
+// 	border-radius: 0px 30px 30px 0px;
+// 	padding: 21px;
+// 	border: 1px solid #000;
+// 	background-color: #fff;
+// 	border-left: 0;
+
+// }
+
+// footer{
+// 	width: 100%;
+// 	height: 10vh;
+// 	background: green;
+// 	border-top: 1px solid #fff;
+// 	}
